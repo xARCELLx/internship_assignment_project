@@ -8,6 +8,8 @@ import 'package:multi_calculator_app/features/unit_price_calculator/data/reposit
 import 'package:multi_calculator_app/features/unit_price_calculator/domain/repositories/unit_price_repository.dart';
 import 'package:multi_calculator_app/features/unit_price_calculator/domain/usecases/calculate_unit_price_use_case.dart';
 import 'package:multi_calculator_app/features/cash_calculator/presentation/bloc/cash_bloc.dart';
+import 'package:multi_calculator_app/features/unit_price_calculator/presentation/bloc/unit_price_bloc.dart';
+import 'package:multi_calculator_app/features/history/presentation/bloc/history_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -21,4 +23,6 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CalculateCashUseCase(sl()));
   sl.registerLazySingleton(() => CalculateUnitPriceUseCase(sl()));
   sl.registerFactory(() => CashBloc(sl()));
+  sl.registerFactory(() => UnitPriceBloc(sl()));
+  sl.registerFactory(() => HistoryBloc(sl<HistoryRepository>()));
 }
